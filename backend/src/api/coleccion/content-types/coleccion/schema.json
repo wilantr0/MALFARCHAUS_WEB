@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "colecciones",
+  "info": {
+    "singularName": "coleccion",
+    "pluralName": "colecciones",
+    "displayName": "Coleccion"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Objeto": {
+      "type": "component",
+      "component": "shared.objetos",
+      "repeatable": true
+    }
+  }
+}

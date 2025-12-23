@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_shared_tallas",
+  "info": {
+    "displayName": "tallas",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "XS": {
+      "type": "integer"
+    },
+    "S": {
+      "type": "integer"
+    },
+    "M": {
+      "type": "integer"
+    },
+    "L": {
+      "type": "integer"
+    },
+    "XL": {
+      "type": "integer"
+    },
+    "XXL": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

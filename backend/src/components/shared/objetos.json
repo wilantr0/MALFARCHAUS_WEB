@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_shared_objetos",
+  "info": {
+    "displayName": "Objetos",
+    "icon": "shirt"
+  },
+  "options": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "GuiaTallas": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Fotos": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ConTalla": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "Stock": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "tallas": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "ConTalla"
+            },
+            true
+          ]
+        }
+      },
+      "component": "shared.tallas",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

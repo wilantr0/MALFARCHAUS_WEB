@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "palabras",
+  "info": {
+    "singularName": "palabra",
+    "pluralName": "palabras",
+    "displayName": "Palabra"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Seccion": {
+      "type": "enumeration",
+      "enum": [
+        "Varios",
+        "Transhumancia",
+        "Las mias venas"
+      ]
+    },
+    "Palabra": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
