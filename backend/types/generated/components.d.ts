@@ -21,6 +21,7 @@ export interface SharedObjetos extends Struct.ComponentSchema {
     ConTalla: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
+    Descripcion: Schema.Attribute.Blocks;
     Fotos: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
     GuiaTallas: Schema.Attribute.Media<'images'>;
     Nombre: Schema.Attribute.String &

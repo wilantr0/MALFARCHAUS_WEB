@@ -444,13 +444,16 @@ export interface ApiColeccionColeccion extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Descripcion: Schema.Attribute.Blocks & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::coleccion.coleccion'
     > &
       Schema.Attribute.Private;
-    Objeto: Schema.Attribute.Component<'shared.objetos', true>;
+    Nombre: Schema.Attribute.String & Schema.Attribute.Required;
+    Objeto: Schema.Attribute.Component<'shared.objetos', true> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -479,6 +482,38 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     Tagline: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Titulo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPaginaPagina extends Struct.CollectionTypeSchema {
+  collectionName: 'paginas';
+  info: {
+    displayName: 'Pagina';
+    pluralName: 'paginas';
+    singularName: 'pagina';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ContentMedia: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    ContentText: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Imagen: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pagina.pagina'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1028,6 +1063,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::coleccion.coleccion': ApiColeccionColeccion;
       'api::home.home': ApiHomeHome;
+      'api::pagina.pagina': ApiPaginaPagina;
       'api::palabra.palabra': ApiPalabraPalabra;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

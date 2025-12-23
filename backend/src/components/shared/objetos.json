@@ -11,6 +11,9 @@
       "required": true,
       "unique": true
     },
+    "Descripcion": {
+      "type": "blocks"
+    },
     "GuiaTallas": {
       "type": "media",
       "multiple": false,

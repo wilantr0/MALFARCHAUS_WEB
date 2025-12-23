@@ -11,10 +11,19 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "Nombre": {
+      "type": "string",
+      "required": true
+    },
+    "Descripcion": {
+      "type": "blocks",
+      "required": true
+    },
     "Objeto": {
       "type": "component",
       "component": "shared.objetos",
-      "repeatable": true
+      "repeatable": true,
+      "required": true
     }
   }
 }
