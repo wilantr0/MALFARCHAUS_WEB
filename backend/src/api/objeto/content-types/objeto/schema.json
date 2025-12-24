@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "objetos",
+  "info": {
+    "singularName": "objeto",
+    "pluralName": "objetos",
+    "displayName": "Objeto"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nombre": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Descripcion": {
+      "type": "blocks",
+      "required": true
+    },
+    "GuiaTallas": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Fotos": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ConTalla": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "Stock": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "Tallas": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "ConTalla"
+            },
+            true
+          ]
+        }
+      },
+      "component": "shared.tallas",
+      "repeatable": true,
+      "max": 1
+    },
+    "Precio": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}

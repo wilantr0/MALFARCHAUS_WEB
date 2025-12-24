@@ -452,8 +452,7 @@ export interface ApiColeccionColeccion extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Nombre: Schema.Attribute.String & Schema.Attribute.Required;
-    Objeto: Schema.Attribute.Component<'shared.objetos', true> &
-      Schema.Attribute.Required;
+    objetos: Schema.Attribute.Relation<'oneToMany', 'api::objeto.objeto'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -475,6 +474,7 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Footer: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Hero: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
@@ -482,6 +482,53 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     Tagline: Schema.Attribute.Blocks & Schema.Attribute.Required;
     Titulo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiObjetoObjeto extends Struct.CollectionTypeSchema {
+  collectionName: 'objetos';
+  info: {
+    displayName: 'Objeto';
+    pluralName: 'objetos';
+    singularName: 'objeto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ConTalla: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Descripcion: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    Fotos: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
+    GuiaTallas: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::objeto.objeto'
+    > &
+      Schema.Attribute.Private;
+    Nombre: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    Precio: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    Stock: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    Tallas: Schema.Attribute.Component<'shared.tallas', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 1;
+        },
+        number
+      >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1063,6 +1110,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::coleccion.coleccion': ApiColeccionColeccion;
       'api::home.home': ApiHomeHome;
+      'api::objeto.objeto': ApiObjetoObjeto;
       'api::pagina.pagina': ApiPaginaPagina;
       'api::palabra.palabra': ApiPalabraPalabra;
       'plugin::content-releases.release': PluginContentReleasesRelease;

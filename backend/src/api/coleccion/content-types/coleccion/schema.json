@@ -19,11 +19,10 @@
       "type": "blocks",
       "required": true
     },
-    "Objeto": {
-      "type": "component",
-      "component": "shared.objetos",
-      "repeatable": true,
-      "required": true
+    "objetos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::objeto.objeto"
     }
   }
 }

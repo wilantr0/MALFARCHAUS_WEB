@@ -26,6 +26,10 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "Footer": {
+      "type": "blocks",
+      "required": true
     }
   }
 }
